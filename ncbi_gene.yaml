@@ -35,7 +35,6 @@ node_properties:
   - 'full_name'
   - 'description'
   - 'in_taxon'
-  - 'in_taxon_label'
   - 'provided_by'
 
 transform_mode: 'flat'
