@@ -1,7 +1,7 @@
 from koza.cli_runner import get_koza_app
 from biolink_model.datamodel.pydanticmodel_v2 import Gene
 
-koza_app = get_koza_app("ncbi_gene")
+koza_app = get_koza_app("ncbi_gene")  # depending on the ingest name here is unfortunate
 
 while (row := koza_app.get_row()) is not None:
 

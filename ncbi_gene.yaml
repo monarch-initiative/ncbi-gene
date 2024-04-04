@@ -1,7 +1,7 @@
 name: 'ncbi_gene'
 
 files:
-  - './data/ncbi/gene_info.gz'
+  - './data/gene_info.gz'
 
 format: 'csv'
 
