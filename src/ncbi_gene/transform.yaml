@@ -1,0 +1,45 @@
+# Config file for transforming data from a source
+# See additional/optional config parameters at https://koza.monarchinitiative.org/Ingests/source_config/
+
+name: "ncbi_gene"
+
+metadata: "./src/ncbi_gene/metadata.yaml"
+
+format: "csv" # Format of the data files (csv or json)
+
+files:
+  - './data/gene_info.gz'
+
+node_properties:
+  - "id"
+  - "category"
+  - "name"
+  - "symbol"
+  - "full_name"
+  - "description"
+  - "in_taxon"
+  - "provided_by"
+
+transform_mode: "flat"
+
+delimiter: "\t" # Delimiter for csv files (REQUIRED if format is csv)
+
+columns:
+  - "tax_id"
+  - "GeneID"
+  - "Symbol"
+  - "LocusTag"
+  - "Synonyms"
+  - "dbXrefs"
+  - "chromosome"
+  - "map_location"
+  - "description"
+  - "type_of_gene"
+  - "Symbol_from_nomenclature_authority"
+  - "Full_name_from_nomenclature_authority"
+  - "Nomenclature_status"
+  - "Other_designations"
+  - "Modification_date"
+  - "Feature_type"
+
+header: 0

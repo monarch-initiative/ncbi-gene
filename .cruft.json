@@ -1,0 +1,25 @@
+{
+  "template": "https://github.com/monarch-initiative/cookiecutter-monarch-ingest.git",
+  "commit": "bd969c818d9380b12a43d0cc4a20765ea6aa12c8",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "github_org_name": "monarch-initiative",
+      "project_name": "NCBI Gene",
+      "project_description": "Ingest of genes from NCBI",
+      "__repo_name": "NCBI-Gene",
+      "__project_slug": "ncbi_gene",
+      "__project_url": "https://github.com/monarch-initiative/NCBI-Gene",
+      "ingest_source": "ncbi",
+      "ingest_type": "gene",
+      "__ingest_name": "ncbi_gene",
+      "min_python_version": "3.10",
+      "full_name": "Kevin Schaper",
+      "email": "kevin@tislab.org",
+      "__author": "Kevin Schaper <kevin@tislab.org>",
+      "license": "BSD-3",
+      "_template": "https://github.com/monarch-initiative/cookiecutter-monarch-ingest.git"
+    }
+  },
+  "directory": null
+}

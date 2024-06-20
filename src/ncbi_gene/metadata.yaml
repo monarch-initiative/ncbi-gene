@@ -1,0 +1,15 @@
+# Metadata for the project
+# Uncomment and edit the fields you want to include in the metadata
+# See metadata properties at https://koza.monarchinitiative.org/Ingests/source_config/
+
+# id:  'CURIE for the project'
+name: 'ncbi_gene'
+ingest_title: 'ncbi_gene'
+# ingest_url: 'https://github.com/monarch-initiative/NCBI-Gene'
+ingest_url: 'https://www.ncbi.nlm.nih.gov/gene/'
+description: 'Gene integrates information from a wide range of species. A record may include nomenclature, Reference Sequences (RefSeqs), maps, pathways, variations, phenotypes, and links to genome-, phenotype-, and locus-specific resources worldwide.'
+# source: 'Possibly replaced by provided_by'
+provided_by: 'ncbi'
+# One of license and rights is possibly redundant
+# license: 'Link to license'
+rights: 'http://www.ncbi.nlm.nih.gov/home/about/policies.shtml'

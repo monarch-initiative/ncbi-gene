@@ -1,6 +1,0 @@
----
--
-  url: https://ftp.ncbi.nih.gov/gene/DATA/gene_info.gz
-  local_name: data/gene_info.gz
-  tag: ncbi_gene
-
