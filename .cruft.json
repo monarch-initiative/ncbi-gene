@@ -1,6 +1,6 @@
 {
   "template": "https://github.com/monarch-initiative/cookiecutter-monarch-ingest.git",
-  "commit": "bd969c818d9380b12a43d0cc4a20765ea6aa12c8",
+  "commit": "931956b61c8fdb024594b59d20a472c24de458d8",
   "checkout": null,
   "context": {
     "cookiecutter": {
