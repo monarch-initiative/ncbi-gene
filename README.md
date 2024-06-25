@@ -10,7 +10,7 @@ The NCBI Gene integrates information from a wide range of species. A record may 
 
 ### Gene Information
 
-Genes for all NCBI species (Dog, Cow, Pig, Chicken) are loaded using the ingest file (filtered to only NCBI taxon ID).
+Genes for all NCBI species (Dog, Cow, Pig, Chicken, et alia) are loaded using the ingest file (filtered to only NCBI taxon ID).
 
 #### Biolink Captured
 
