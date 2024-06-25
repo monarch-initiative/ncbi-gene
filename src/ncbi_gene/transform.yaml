@@ -49,33 +49,105 @@ filters:
     column: "tax_id"
     filter_code: "in"
     value:
-      - "9615"
-      - "9913"
-      - "9823"
-      - "9031"
-      # multiple Aspergillus genus taxon:5052
-      # Aspergillus nidulans FGSC A4 - primary Aspergillus nidulans genomic reference
+      - "10029"
+      - "10036"
+      - "10047"
+      - "10090"
+      - "10141"
+      - "10160"
+      - "122765"
+      - "151761"
+      - "1549675"
+      - "156757"
+      - "169418"
+      - "222416"
       - "227321"
-      #
-      # Monarch Technical, 26 Sept 2022: decision taken to *exclude*
-      # non-nidulans Aspergillus (sub-)species from the ingest for now
-      #
-      # - '330879'  # Aspergillus fumigatus Af293
-      # - '425011'  # Aspergillus niger CBS 513.88
-      # - '510516'  # Aspergillus oryzae RIB40
-      # - '341663'  # Aspergillus terreus NIH2624
-      # - '767769'  # Aspergillus brasiliensis - not in GOA
-      # - '41063'   # Aspergillus zonatus - not in GOA
-      # - '1137211' # Aspergillus acidus CBS 106.47  - not in GOA
-      # - '1073089'  # Aspergillus wentii DTO 134E9
-      # - '46472'  # Aspergillus versicolor
-      # - '602072' # Aspergillus carbonarius ITEM 5010
-      # - '690307'  # Aspergillus aculeatus ATCC16872
-      # - '1160497'  # Aspergillus glaucus CBS 516.65
-      # - '331117'  # Neosartorya fischeri NRRL 181
-      # - '344612'  # Aspergillus clavatus NRRL 1
-      # - '332952'  # Aspergillus flavus NRRL 3357
-      # - '767770'  # Aspergillus tubingensis CBS 134.48 - not in GOA
-      # - '75750'  # Aspergillus sydowii - not in GOA
-      # - '451804'  # Aspergillus fumigatus A1163 - not in GOA
-      # - '1033177'  # Aspergillus kawachii - not in GOA
+      - "244585"
+      - "27717"
+      - "29064"
+      - "30458"
+      - "30538"
+      - "32443"
+      - "32536"
+      - "328804"
+      - "34839"
+      - "34880"
+      - "34882"
+      - "37347"
+      - "38626"
+      - "40674"
+      - "452646"
+      - "47665"
+      - "48167"
+      - "494514"
+      - "54133"
+      - "54180"
+      - "54181"
+      - "56268"
+      - "59523"
+      - "59729"
+      - "60468"
+      - "61379"
+      - "64680"
+      - "69297"
+      - "77151"
+      - "7994"
+      - "8015"
+      - "8128"
+      - "8782"
+      - "8790"
+      - "8835"
+      - "8839"
+      - "8843"
+      - "8932"
+      - "89462"
+      - "9031"
+      - "9103"
+      - "91561"
+      - "9226"
+      - "9322"
+      - "9363"
+      - "93934"
+      - "9397"
+      - "9483"
+      - "9518"
+      - "9541"
+      - "9544"
+      - "9598"
+      - "9612"
+      - "9615"
+      - "9627"
+      - "9643"
+      - "9649"
+      - "9651"
+      - "9669"
+      - "9681"
+      - "9682"
+      - "9685"
+      - "9689"
+      - "9694"
+      - "9695"
+      - "9696"
+      - "9733"
+      - "9739"
+      - "9783"
+      - "9788"
+      - "9791"
+      - "9793"
+      - "9796"
+      - "9807"
+      - "9823"
+      - "9838"
+      - "9840"
+      - "9844"
+      - "9845"
+      - "9850"
+      - "9858"
+      - "9861"
+      - "9863"
+      - "9895"
+      - "9913"
+      - "9925"
+      - "9940"
+      - "9946"
+      - "9986"
