@@ -83,7 +83,6 @@ def expected():
 
 
 def test_single_row(mock_transform, expected):
-    print(mock_transform)
     assert len(mock_transform) == 1
     entity = mock_transform[0]
     assert entity
