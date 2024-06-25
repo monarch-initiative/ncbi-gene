@@ -3,8 +3,8 @@ import json
 
 
 def main():
-    url = "https://api.github.com/repos/monarch-initiative/NCBI-Gene/releases/latest"
-    
+    url = "https://api.github.com/repos/monarch-initiative/ncbi-gene/releases/latest"
+
     # Get the latest release from the GitHub API
     response = requests.get(url)
     if response.status_code != 200:
@@ -34,4 +34,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
