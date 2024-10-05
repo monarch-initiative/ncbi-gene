@@ -44,10 +44,13 @@ columns:
 
 header: 0
 
+# This likely will need adjusting based on the included taxa below
+min_node_count: 2500000
+
 filters:
   - inclusion: "include"
     column: "tax_id"
-    filter_code: "in"
+    filter_code: "in_exact"
     value:
       - "10036"
       - "10042"

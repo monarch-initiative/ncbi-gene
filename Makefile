@@ -74,6 +74,7 @@ download:
 .PHONY: run
 run: download
 	$(RUN) ingest transform
+	$(RUN) koza split output/ncbi_gene_nodes.tsv in_taxon --remove-prefixes --output-dir output/by_taxon
 	$(RUN) python scripts/generate-report.py
 
 
