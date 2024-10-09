@@ -49,4 +49,5 @@ jobs:
           tag_name: ${{ env.DATE }}
           files: |
             output/*
+            output/**/*
           generate_release_notes: true
