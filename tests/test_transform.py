@@ -7,6 +7,7 @@ The test_example function then tests the output of the transform script.
 See the Koza documentation for more information on testing transforms:
 https://koza.monarchinitiative.org/Usage/testing/
 """
+from pathlib import Path
 
 import pytest
 
@@ -16,7 +17,8 @@ from koza.utils.testing_utils import mock_koza
 
 # Define the ingest name and transform script path
 INGEST_NAME = "ncbi_gene"
-TRANSFORM_SCRIPT = "./src/ncbi_gene/transform.py"
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+TRANSFORM_SCRIPT = str(PROJECT_ROOT / "src" / "ncbi_gene" / "transform.py")
 
 
 # Define an example row to test (as a dictionary)
@@ -79,6 +81,7 @@ def expected():
         full_name="-",
         in_taxon=["NCBITaxon:24"],
         symbol="gyrB",
+        in_taxon_label="Shewanella putrefaciens"
     )
 
 

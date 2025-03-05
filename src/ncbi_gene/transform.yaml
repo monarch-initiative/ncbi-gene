@@ -19,6 +19,7 @@ node_properties:
   - "description"
   - "in_taxon"
   - "provided_by"
+  - "in_taxon_label"
 
 transform_mode: "flat"
 
