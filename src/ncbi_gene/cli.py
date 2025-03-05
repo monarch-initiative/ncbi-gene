@@ -12,13 +12,27 @@ logger = logging.getLogger(__name__)
 
 
 @app.callback()
-def callback(version: bool = typer.Option(False, "--version", is_eager=True),
-):
+def callback(
+        version: bool = typer.Option(False, "--version", is_eager=True),
+        verbose: int = typer.Option(True, help="Verbosity level: 0 (warning), 1 (info), 2+ (debug)"),
+        quiet: bool = typer.Option(False, help="Suppress logging output")
+    ):
     """NCBI Gene CLI."""
     if version:
         from ncbi_gene import __version__
         typer.echo(f"NCBI Gene version: {__version__}")
         raise typer.Exit()
+
+
+    if verbose:
+        logger.setLevel(level=logging.DEBUG)
+    elif verbose is None:
+        logger.setLevel(level=logging.INFO)
+    else:
+        logger.setLevel(level=logging.WARNING)
+    if quiet:
+        logger.setLevel(level=logging.ERROR)
+    logger.info(f"Logger {logger.name} set to level {logger.level}")
 
 
 @app.command()
@@ -33,17 +47,16 @@ def download(force: bool = typer.Option(False, help="Force download of data, eve
 def transform(
     output_dir: str = typer.Option("output", help="Output directory for transformed data"),
     row_limit: int = typer.Option(None, help="Number of rows to process"),
-    verbose: int = typer.Option(False, help="Whether to be verbose"),
 ):
     """Run the Koza transform for NCBI Gene."""
     typer.echo("Transforming data for NCBI Gene...")
-    transform_code = Path(__file__).parent / "transform.yaml"
+    transform_code = Path(__file__).resolve().parent / "transform.yaml"
     transform_source(
-        source=transform_code,
+        source=str(transform_code),
         output_dir=output_dir,
         output_format="tsv",
         row_limit=row_limit,
-        verbose=verbose,
+        verbose=(logger.level <= logging.INFO),
     )
     
 

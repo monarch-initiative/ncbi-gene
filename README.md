@@ -19,6 +19,7 @@ Genes for all NCBI species (Dog, Cow, Pig, Chicken, et alia) are loaded using th
   - symbol
   - description
   - in_taxon
+  - in_taxon_label
   - provided_by (["infores:ncbi-gene"])
 
 ### Citation
