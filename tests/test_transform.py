@@ -87,7 +87,7 @@ def expected():
 @pytest.fixture(autouse=True)
 def mock_taxon_lookup(monkeypatch):
     def fake_taxon_name(tax_id):
-        return "TestTaxon"
+        return "Shewanella putrefaciens"
     monkeypatch.setattr("ncbi_gene.taxon_lookup.get_taxon_name", fake_taxon_name)
 
 
