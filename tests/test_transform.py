@@ -84,6 +84,12 @@ def expected():
         in_taxon_label="Shewanella putrefaciens"
     )
 
+@pytest.fixture(autouse=True)
+def mock_taxon_lookup(monkeypatch):
+    def fake_taxon_name(tax_id):
+        return "TestTaxon"
+    monkeypatch.setattr("ncbi_gene.taxon_lookup.get_taxon_name", fake_taxon_name)
+
 
 def test_single_row(mock_transform, expected):
     assert len(mock_transform) == 1
