@@ -9,6 +9,11 @@ on:
 jobs:
   test-backend:
     runs-on: ${{ matrix.os }}
+
+    env:
+      NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+      NCBI_MAIL: ${{ secrets.NCBI_MAIL }}
+
     strategy:
       matrix:
         python-version: ["3.10", "3.11", "3.12"]

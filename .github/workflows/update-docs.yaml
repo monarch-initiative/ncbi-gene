@@ -12,6 +12,12 @@ on:
 jobs:
   update-docs:
     runs-on: ubuntu-latest
+
+    env:
+      NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+      NCBI_MAIL: ${{ secrets.NCBI_MAIL }}
+
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4

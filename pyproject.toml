@@ -15,6 +15,7 @@ kgx = ">=2.4.0"
 biolink-model = "^4.2.0"
 duckdb = ">=0.10.2"
 loguru = "*"
+dotenv = "^0.9.9"
 
 [tool.poetry.group.dev]
 optional = true
