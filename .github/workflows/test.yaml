@@ -22,6 +22,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Debug Secrets
+        run: |
+            if [ -z "$NCBI_API_KEY" ]; then echo "NCBI_API_KEY is NOT set"; else echo "NCBI_API_KEY is SET"; fi
+            if [ -z "$NCBI_MAIL" ]; then echo "NCBI_MAIL is NOT set"; else echo "NCBI_MAIL is SET"; fi
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:

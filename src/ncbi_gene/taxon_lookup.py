@@ -39,17 +39,13 @@ def get_taxon_name(taxon_id: str) -> str:
 
 def get_ncbi_access_data() -> Tuple[str, str]:
     load_dotenv()
-    try:
-        api_key = os.environ["NCBI_API_KEY"]
-        print(f"Api key is {api_key}")
-    except KeyError:
-        api_key = None
-        logger.debug("No NCBI_API_KEY provided. Will use none.")
-    try:
-        mail = os.environ["NCBI_MAIL"]
-        print(f"NCBI Mail is {api_key}")
+    api_key = os.getenv("NCBI_API_KEY")
+    mail = os.getenv("NCBI_MAIL")
 
-    except KeyError:
-        mail = None
+    if not api_key:
+        logger.debug("No NCBI_API_KEY provided. Will use none.")
+
+    if not mail:
         logger.debug("No NCBI_MAIL provided. Will use none.")
+
     return api_key, mail
