@@ -43,11 +43,17 @@ jobs:
       #    install your root project, if required
       #----------------------------------------------
       - name: Install library
+        env:
+          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+          NCBI_MAIL: ${{ secrets.NCBI_MAIL }}
         run: poetry install --no-interaction
 
       #----------------------------------------------
       #              run pytest
       #----------------------------------------------
       - name: Run tests
+        env:
+          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+          NCBI_MAIL: ${{ secrets.NCBI_MAIL }}
         run: poetry run pytest tests
 
