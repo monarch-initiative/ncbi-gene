@@ -6,6 +6,10 @@ on:
   pull_request:
   workflow_dispatch:
 
+env:
+  NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+  NCBI_MAIL: ${{ secrets.NCBI_MAIL }}
+
 jobs:
   test-backend:
     runs-on: ${{ matrix.os }}
@@ -17,11 +21,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Debug Secrets
+        run: |
+            if [ -z "$NCBI_API_KEY" ]; then echo "NCBI_API_KEY is NOT set"; else echo "NCBI_API_KEY is SET"; fi
+            if [ -z "$NCBI_MAIL" ]; then echo "NCBI_MAIL is NOT set"; else echo "NCBI_MAIL is SET"; fi
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-
+          
       #----------------------------------------------
       #          install & configure poetry
       #----------------------------------------------
