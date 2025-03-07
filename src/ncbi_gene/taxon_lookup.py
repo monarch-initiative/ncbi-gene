@@ -4,7 +4,7 @@ from typing import Tuple
 
 import requests
 from functools import lru_cache
-
+from dotenv import load_dotenv
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
 
@@ -38,14 +38,14 @@ def get_taxon_name(taxon_id: str) -> str:
         return ""
 
 def get_ncbi_access_data() -> Tuple[str, str]:
-    try:
-        api_key = os.getenv("NCBI_API_KEY")
-    except ValueError:
-        api_key = None
+    load_dotenv()
+    api_key = os.getenv("NCBI_API_KEY")
+    mail = os.getenv("NCBI_MAIL")
+
+    if not api_key:
         logger.debug("No NCBI_API_KEY provided. Will use none.")
-    try:
-        mail = os.getenv("NCBI_MAIL")
-    except ValueError:
-        mail = None
+
+    if not mail:
         logger.debug("No NCBI_MAIL provided. Will use none.")
+
     return api_key, mail
