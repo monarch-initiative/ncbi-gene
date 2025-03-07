@@ -6,13 +6,13 @@ on:
   pull_request:
   workflow_dispatch:
 
+env:
+  NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+  NCBI_MAIL: ${{ secrets.NCBI_MAIL }}
+
 jobs:
   test-backend:
     runs-on: ${{ matrix.os }}
-
-    env:
-      NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
-      NCBI_MAIL: ${{ secrets.NCBI_MAIL }}
 
     strategy:
       matrix:
@@ -43,17 +43,11 @@ jobs:
       #    install your root project, if required
       #----------------------------------------------
       - name: Install library
-        env:
-          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
-          NCBI_MAIL: ${{ secrets.NCBI_MAIL }}
         run: poetry install --no-interaction
 
       #----------------------------------------------
       #              run pytest
       #----------------------------------------------
       - name: Run tests
-        env:
-          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
-          NCBI_MAIL: ${{ secrets.NCBI_MAIL }}
         run: poetry run pytest tests
 
