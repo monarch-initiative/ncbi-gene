@@ -1,1 +1,1 @@
-{"config":{"lang":["en"],"separator":"[\\s\\-]+","pipeline":["stopWordFilter"]},"docs":[{"location":"","title":"NCBI Gene Report","text":""}]}
+{"config":{"lang":["en"],"separator":"[\\s\\-]+","pipeline":["stopWordFilter"]},"docs":[{"location":"","title":"NCBI Gene Report","text":""},{"location":"#nodes-report","title":"Nodes Report","text":"category prefix count_star() biolink:Gene NCBIGene 2623967"}]}
