@@ -1,103 +1,65 @@
-# NCBI Gene
+# ncbi-gene
 
-| [Documentation](https://monarch-initiative.github.io/ncbi-gene) |
+Koza ingest for NCBI Gene data, transforming gene information into Biolink model format.
 
-The NCBI Gene integrates information from a wide range of species. A record may include nomenclature, Reference Sequences (RefSeqs), maps, pathways, variations, phenotypes, and links to genome-, phenotype-, and locus-specific resources worldwide.
+## Data Source
 
-### Data Sources
+[NCBI Gene](https://www.ncbi.nlm.nih.gov/gene/) integrates information from a wide range of species. A record may include nomenclature, Reference Sequences (RefSeqs), maps, pathways, variations, phenotypes, and links to genome-, phenotype-, and locus-specific resources worldwide.
 
-- [NCBI bulk downloads](https://www.ncbi.nlm.nih.gov/gene/)
+Data is downloaded from: `https://ftp.ncbi.nih.gov/gene/DATA/gene_info.gz`
 
-### Gene Information
+## Output
 
-Genes for all NCBI species (Dog, Cow, Pig, Chicken, et alia) are loaded using the ingest file (filtered to only NCBI taxon ID).
+This ingest produces:
+- **Gene nodes** - Gene entities with NCBI Gene IDs, symbols, names, and taxon information
 
-#### Biolink Captured
+### Biolink Properties Captured
 
 - biolink:Gene
   - id
   - symbol
+  - name
+  - full_name
   - description
   - in_taxon
   - in_taxon_label
   - provided_by (["infores:ncbi-gene"])
 
-### Citation
+### Postprocessing
 
-National Center for Biotechnology Information (NCBI)[Internet]. Bethesda (MD): National Library of Medicine (US), National Center for Biotechnology Information; [1988] – [cited 2024 Dec]. Available from: https://www.ncbi.nlm.nih.gov/
-
-## Requirements
-
-- Python >= 3.10
-- [Poetry](https://python-poetry.org/docs/#installation)
-
-## Installation
-
-```bash
-cd NCBI Gene
-make install
-# or
-poetry install
-```
-
-> **Note** that the `make install` command is just a convenience wrapper around `poetry install`.
-
-Once installed, you can check that everything is working as expected:
-
-```bash
-# Run the pytest suite
-make test
-# Download the data and run the Koza transform
-make download
-make run
-```
+Output is split by taxon into separate files in `output/by_taxon/`.
 
 ## Usage
 
-This project is set up with a Makefile for common tasks.  
-To see available options:
-
 ```bash
-make help
+# Install dependencies
+just install
+
+# Run full pipeline
+just run
+
+# Or run steps individually
+just download      # Download gene_info data
+just transform-all # Run Koza transform
+just postprocess   # Split output by taxon
+just test          # Run tests
 ```
 
-### Download and Transform
+## Requirements
 
-Download the data for the ncbi_gene transform:
+- Python 3.10+
+- [uv](https://github.com/astral-sh/uv) package manager
+- [just](https://github.com/casey/just) command runner
 
-```bash
-poetry run ncbi_gene download
-```
+## Environment Variables
 
-To run the Koza transform for NCBI Gene:
+- `NCBI_API_KEY` - NCBI API key for higher rate limits (optional)
+- `NCBI_MAIL` - Email for NCBI E-utilities identification (optional)
 
-```bash
-poetry run ncbi_gene transform
-```
+## Citation
 
-To see available options:
+National Center for Biotechnology Information (NCBI)[Internet]. Bethesda (MD): National Library of Medicine (US), National Center for Biotechnology Information; [1988] - [cited 2024 Dec]. Available from: https://www.ncbi.nlm.nih.gov/
 
-```bash
-poetry run ncbi_gene download --help
-# or
-poetry run ncbi_gene transform --help
-```
+## License
 
-### Testing
-
-To run the test suite:
-
-```bash
-make test
-```
-
----
-
-> This project was generated using [monarch-initiative/cookiecutter-monarch-ingest](https://github.com/monarch-initiative/cookiecutter-monarch-ingest).  
-> Keep this project up to date using cruft by occasionally running in the project directory:
->
-> ```bash
-> cruft update
-> ```
->
-> For more information, see the [cruft documentation](https://cruft.github.io/cruft/#updating-a-project)
+BSD-3-Clause

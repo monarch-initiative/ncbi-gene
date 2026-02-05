@@ -1,24 +1,45 @@
 """
-An example test file for the transform script.
+Test file for the transform script.
 
-It uses pytest fixtures to define the input data and the mock koza transform.
-The test_example function then tests the output of the transform script.
-
+Uses the KozaRunner pattern with PassthroughWriter for testing transforms.
 See the Koza documentation for more information on testing transforms:
 https://koza.monarchinitiative.org/Usage/testing/
 """
+import importlib.util
 from pathlib import Path
 
 import pytest
 
 from biolink_model.datamodel.pydanticmodel_v2 import Gene
+from koza.runner import KozaRunner, PassthroughWriter, load_transform
 
-from koza.utils.testing_utils import mock_koza
 
-# Define the ingest name and transform script path
-INGEST_NAME = "ncbi_gene"
+# Define the transform script path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-TRANSFORM_SCRIPT = str(PROJECT_ROOT / "src" / "ncbi_gene" / "transform.py")
+TRANSFORM_SCRIPT = PROJECT_ROOT / "src" / "transform.py"
+
+
+def load_module_from_path(path: Path):
+    """Load a Python module from a file path."""
+    spec = importlib.util.spec_from_file_location(path.stem, path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def run_transform(rows: list[dict]) -> list:
+    """Run the transform on a list of input rows and return the output entities."""
+    module = load_module_from_path(TRANSFORM_SCRIPT)
+    hooks = load_transform(module)
+    writer = PassthroughWriter()
+    runner = KozaRunner(
+        data=iter(rows),
+        writer=writer,
+        hooks=hooks,
+        base_directory=TRANSFORM_SCRIPT.parent,
+    )
+    runner.run()
+    return writer.data
 
 
 # Define an example row to test (as a dictionary)
@@ -44,32 +65,6 @@ def example_row():
     }
 
 
-# Define the mock koza transform
-@pytest.fixture
-def mock_transform(mock_koza, example_row):
-    # Returns [entity_a, entity_b, association] for a single row
-    return mock_koza(
-        INGEST_NAME,
-        example_row,
-        TRANSFORM_SCRIPT,
-    )
-
-
-# Or for multiple rows
-# @pytest.fixture
-# def mock_transform_multiple_rows(mock_koza, example_list_of_rows):
-#     # Returns concatenated list of [entity_a, entity_b, association]
-#     # for each row in example_list_of_rows
-#     return mock_koza(
-#         INGEST_NAME,
-#         example_list_of_rows,
-#         TRANSFORM_SCRIPT,
-#     )
-
-
-# Test the output of the transform
-
-
 @pytest.fixture
 def expected():
     return Gene(
@@ -84,16 +79,18 @@ def expected():
         in_taxon_label="Shewanella putrefaciens"
     )
 
+
 @pytest.fixture(autouse=True)
 def mock_taxon_lookup(monkeypatch):
     def fake_taxon_name(tax_id):
         return "Shewanella putrefaciens"
-    monkeypatch.setattr("ncbi_gene.taxon_lookup.get_taxon_name", fake_taxon_name)
+    monkeypatch.setattr("taxon_lookup.get_taxon_name", fake_taxon_name)
 
 
-def test_single_row(mock_transform, expected):
-    assert len(mock_transform) == 1
-    entity = mock_transform[0]
+def test_single_row(example_row, expected):
+    result = run_transform([example_row])
+    assert len(result) == 1
+    entity = result[0]
     assert entity
     assert entity.name == "gyrB"
     assert entity == expected
