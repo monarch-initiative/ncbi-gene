@@ -27,7 +27,7 @@ run: download transform-all postprocess
 # Download source data
 [group('ingest')]
 download:
-    uv run koza download download.yaml
+    uv run downloader
 
 # Run all transforms
 [group('ingest')]
@@ -51,6 +51,7 @@ transform NAME:
 [group('ingest')]
 postprocess:
     uv run koza split output/ncbi_gene_nodes.tsv in_taxon --remove-prefixes --output-dir output/by_taxon
+    uv run kgx transform -i tsv -f nt -d gz -o output/ncbi_gene.nt.gz output/ncbi_gene_nodes.tsv
 
 # ============== Development ==============
 

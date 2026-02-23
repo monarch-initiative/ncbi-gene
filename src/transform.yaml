@@ -4,12 +4,12 @@
 name: "ncbi_gene"
 
 reader:
-  name: "ncbi_gene_reader"
   files:
-    - "./data/gene_info.gz"
+    - "../data/gene_info.gz"
   format: "csv"
   delimiter: "\t"
-  header: 0
+  header_mode: 0
+  header_prefix: "#"
   columns:
     - "tax_id"
     - "GeneID"
@@ -169,12 +169,9 @@ reader:
         - "9986"
         - "2060905"
 
-transform:
-  name: "ncbi_gene_transform"
-  mode: "flat"
+transform: {}
 
 writer:
-  name: "ncbi_gene_writer"
   node_properties:
     - "id"
     - "category"
@@ -186,6 +183,4 @@ writer:
     - "provided_by"
     - "in_taxon_label"
   edge_properties: []
-
-# This likely will need adjusting based on the included taxa below
-min_node_count: 2500000
+  min_node_count: 2500000

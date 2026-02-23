@@ -16,6 +16,7 @@ dynamic = ["version"]
 
 dependencies = [
   "koza>=2.0.0",
+  "kgx>=2.4.0",
   "biolink-model>=4.0.0",
   "duckdb>=0.10.2",
   "python-dotenv>=1.0.0",

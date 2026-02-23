@@ -1,4 +1,8 @@
 import logging
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
 
 import koza
 from biolink_model.datamodel.pydanticmodel_v2 import Gene
