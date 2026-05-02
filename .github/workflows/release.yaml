@@ -40,9 +40,6 @@ jobs:
       - name: Run pipeline
         run: just run
 
-      - name: Postprocess
-        run: just postprocess
-
       - name: Generate release tag
         id: tag
         run: |
@@ -72,3 +69,4 @@ jobs:
             output/*_edges.tsv
             output/*.nt.gz
             output/by_taxon/*
+            output/release-metadata.yaml
